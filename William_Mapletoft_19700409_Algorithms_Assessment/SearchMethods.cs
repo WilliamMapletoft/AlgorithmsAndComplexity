@@ -15,7 +15,7 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
             int low = 0;
             int mid = (high + low) / 2;
 
-            while (found == false)
+            do
             {
                 mid = (high + low) / 2;
                 if (Input[mid] > Search)
@@ -31,7 +31,16 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
                     found = true;
                 }
             }
-            return mid;
+            while (found == false && low < high - 1);
+
+            if (found = false)
+            {
+                return 0;
+            }
+            else
+            {
+                return mid + 1;
+            }
         }
     }
 }

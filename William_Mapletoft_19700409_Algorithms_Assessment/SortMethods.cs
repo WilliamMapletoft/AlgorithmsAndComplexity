@@ -10,6 +10,8 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
     {
         public static int[] BubbleSort(int[] Input)
         {
+            Console.WriteLine("<BubbleSort>");
+            int counter = 0;
             int temp = 0;
             bool sorted = false;
             while (sorted == false)
@@ -24,9 +26,11 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
                         Input[i] = temp;
                         sorted = false;
                     }
-
+                    counter++;
                 }
             }
+            
+            Console.WriteLine($"Total operations: {counter}");
             return Input;
         }
     }
