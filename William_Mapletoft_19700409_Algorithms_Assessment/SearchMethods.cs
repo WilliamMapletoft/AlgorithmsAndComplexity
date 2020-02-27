@@ -20,11 +20,11 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
                 mid = (high + low) / 2;
                 if (Input[mid] > Search)
                 {
-                    high = mid;
+                    high = mid - 1;
                 }
                 else if (Input[mid] < Search)
                 {
-                    low = mid;
+                    low = mid + 1;
                 }
                 else
                 {

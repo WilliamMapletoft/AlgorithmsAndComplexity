@@ -13,16 +13,27 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
         public static string SelectedNet = "Net_1_256.txt";
         public static string[] arr = File.ReadAllLines(SelectedNet);
         public static int[] DownloadedArray = arr.Select(int.Parse).ToArray();
+        public static int[] SortedArray = SortMethods.BubbleSort(DownloadedArray);
         static void Main(string[] args)
         {
             Console.WriteLine($"Selected net: {SelectedNet}");
             switch(Menu())
             {
                 case 1: SelectedNet = SelectNet(); Main(args); break;
-                case 2: int[] SortedArray = SortMethods.BubbleSort(DownloadedArray); break;
+                case 2: SortedArray = SortMethods.BubbleSort(DownloadedArray); break;
                 case 3:
                     break;
                 case 4:
+                    Console.WriteLine("Please enter a value to search for.");
+                    int position = SearchMethods.BinarySearch(SortedArray, int.Parse(Console.ReadLine()));
+                    if (position == 0)
+                    {
+                        Console.WriteLine("Searched item not found.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Item found in position {position}");
+                    }
                     break;
             }
             //int[] SortedArray = SortMethods.BubbleSort(Net1_256);
@@ -42,7 +53,6 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
                 Console.WriteLine("3: Sort in descrending order");
                 Console.WriteLine("4: Search the array for a user defined value");
                 choice = int.Parse(Console.ReadLine());
-                Console.WriteLine(choice);
             }
             while (choice < 1 || choice > 4);
             return choice;
@@ -84,7 +94,6 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
                 Console.WriteLine("5: Net_3_256");
                 Console.WriteLine("6: Net_3_2048");
                 choice = int.Parse(Console.ReadLine());
-                Console.WriteLine(choice);
                 switch (choice)
                 {
                     case 1: net = "Net_1_256.txt"; break;
