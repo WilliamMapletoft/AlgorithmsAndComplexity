@@ -86,10 +86,5 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
             Console.WriteLine($"Interpolation Search counter = {counter}");
             return 0;
         }
-
-        public static int InterpolationSearch()
-        {
-
-        }
     }
 }
