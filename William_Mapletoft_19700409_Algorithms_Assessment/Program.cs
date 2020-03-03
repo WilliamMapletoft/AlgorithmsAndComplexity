@@ -25,19 +25,28 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
                     break;
                 case 4:
                     Console.WriteLine("Please enter a value to search for.");
-                    int position = SearchMethods.BinarySearch(SortedArray, int.Parse(Console.ReadLine()));
+                    int value = int.Parse(Console.ReadLine());
+                    int position = SearchMethods.BinarySearch(SortedArray, value);
                     if (position == 0)
                     {
-                        Console.WriteLine("Searched item not found.");
+                        Console.WriteLine("BinarySearch = Searched item not found.");
                     }
                     else
                     {
-                        Console.WriteLine($"Item found in position {position}");
+                        Console.WriteLine($"BinarySearch = Item found in position {position}");
+                    }
+                    int position2 = SearchMethods.InterPolationSearch(SortedArray, value);
+                    if (position2 == 0)
+                    {
+                        Console.WriteLine("InterpolationSearch = Searched item not found.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"InterpolationSearch = Item found in position {position2}");
                     }
                     break;
             }
             //int[] SortedArray = SortMethods.BubbleSort(Net1_256);
-            //Console.WriteLine(SearchMethods.BinarySearch(SortedArray, 8351));
             //EveryTenth(SortedArray);
             Console.ReadLine();
         }
