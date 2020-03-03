@@ -42,5 +42,10 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
                 return mid + 1;
             }
         }
+
+        public static int InterpolationSearch()
+        {
+
+        }
     }
 }
