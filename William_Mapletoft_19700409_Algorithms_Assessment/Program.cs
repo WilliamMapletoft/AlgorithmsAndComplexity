@@ -13,14 +13,30 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
         public static string SelectedNet = "Net_1_256.txt";
         public static string[] arr = File.ReadAllLines(SelectedNet);
         public static int[] DownloadedArray = arr.Select(int.Parse).ToArray();
-        public static int[] SortedArray = SortMethods.BubbleSort(DownloadedArray);
         static void Main(string[] args)
         {
+            var TempArray = new int[DownloadedArray.Length];
+            DownloadedArray.CopyTo(TempArray, 0);
+            int[] SortedArray = SortMethods.BubbleSort(TempArray);
             Console.WriteLine($"Selected net: {SelectedNet}");
             switch(Menu())
             {
                 case 1: SelectedNet = SelectNet(); Main(args); break;
-                case 2: SortedArray = SortMethods.BubbleSort(DownloadedArray); break;
+                //case 2: SortedArray = SortMethods.BubbleSort(DownloadedArray); EveryTenth(SortedArray); break;
+                case 2:
+                    DownloadedArray.CopyTo(TempArray, 0);
+                    SortedArray = SortMethods.InsertionSort(TempArray);
+                    DownloadedArray.CopyTo(TempArray, 0);
+                    SortedArray = SortMethods.BubbleSort(TempArray);
+                    if (Convert.ToInt32(new string(SelectedNet[7],1)) == 5)
+                    {
+                        EveryTenth(SortedArray);
+                    }
+                    else
+                    {
+                        EveryFifty(SortedArray);
+                    }
+                    break;
                 case 3:
                     break;
                 case 4:
