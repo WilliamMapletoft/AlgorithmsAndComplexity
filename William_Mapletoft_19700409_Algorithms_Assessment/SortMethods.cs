@@ -8,6 +8,8 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
 {
     class SortMethods
     {
+
+        public static int MergeCounter = 0;
         public static int[] BubbleSort(int[] Input)
         {
             int counter = 0;
@@ -56,6 +58,55 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
                 numSorted++;
             }
             Console.WriteLine($"Insertion sort operations : {counter}");
+            return Input;
+        }
+
+        private static void Merge(int[] Input, int[] temp, int low, int middle, int high)
+        {
+            int ResultIndex = low;
+            int TempIndex = low;
+            int DestinationIndex = middle;
+            while (TempIndex < middle && DestinationIndex <= high)
+            {
+                if (Input[DestinationIndex] < temp[TempIndex])
+                {
+                    Input[ResultIndex++] = Input[DestinationIndex++];
+                }
+                else
+                {
+                    Input[ResultIndex++] = temp[TempIndex++];
+                }
+                MergeCounter++;
+            }
+            while (TempIndex < middle)
+            {
+                Input[ResultIndex++] = temp[TempIndex++];
+            }
+        }
+
+        private static void MergeSortRecursive(int[] Input, int[] temp, int low, int high)
+        {
+            MergeCounter++;
+            int n = high - low + 1;
+            int middle = low + n / 2;
+            int i;
+
+            if (n < 2) return;
+            for(i = low; i<middle;i++)
+            {
+                temp[i] = Input[i];
+            }
+            MergeSortRecursive(temp, Input, low, middle - 1);
+            MergeSortRecursive(Input, temp, middle, high);
+            Merge(Input, temp, low, middle, high);
+        }
+
+        public static int[] MergeSort(int[] Input)
+        {
+            int[] temp = new int[Input.Length];
+            MergeCounter = 0;
+            MergeSortRecursive(Input, temp, 0, Input.Length - 1);
+            Console.WriteLine($"Merge sort operations : {MergeCounter}");
             return Input;
         }
     }

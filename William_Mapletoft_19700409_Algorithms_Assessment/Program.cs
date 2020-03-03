@@ -28,6 +28,8 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
                     SortedArray = SortMethods.InsertionSort(TempArray);
                     DownloadedArray.CopyTo(TempArray, 0);
                     SortedArray = SortMethods.BubbleSort(TempArray);
+                    DownloadedArray.CopyTo(TempArray, 0);
+                    SortedArray = SortMethods.MergeSort(TempArray);
                     if (Convert.ToInt32(new string(SelectedNet[7],1)) == 5)
                     {
                         EveryTenth(SortedArray);
