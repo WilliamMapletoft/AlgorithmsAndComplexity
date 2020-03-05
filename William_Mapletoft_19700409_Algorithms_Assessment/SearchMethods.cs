@@ -15,6 +15,7 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
             int low = 0;
             int mid = (high + low) / 2;
             int counter = 0;
+            int closest = 0;
 
             do
             {
@@ -22,10 +23,12 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
                 mid = (high + low) / 2;
                 if (Input[mid] > Search)
                 {
+                    closest = Input[mid];
                     high = mid;
                 }
                 else if (Input[mid] < Search)
                 {
+                    closest = Input[mid];
                     low = mid;
                 }
                 else if (Input[mid] == Search)
@@ -34,57 +37,57 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
                 }
             }
             while (found == false && low < high - 1);
-            Console.WriteLine($"Interpolation Search counter = {counter}");
+            Console.WriteLine($"Binary Search counter = {counter}");
             if (found == false)
             {
-                return 0;
+                if (Search > Input[Input.Length - 1])
+                {
+                    closest = Input[Input.Length - 1];
+                }
+                Console.WriteLine($"Item not found. Closest item: {closest}");
+                return -1;
             }
             else
             {
-                return mid + 1;
+                return mid;
             }
         }
 
         public static int InterPolationSearch(int[] Input, int Search)
         {
-            int low, high, mid;
-            int denominator;
-            low = 1;
-            high = Input.Length - 1;
-            int i = 0;
-            int counter = 0;
-            if (Input[low] <= Search && Search <= Input[high])
+            int closest = 0;
+            int lo = 0, hi = (Input.Length - 1);
+
+            while (lo <= hi && Search >= Input[lo] && Search <= Input[hi])
             {
-                while (low <= high && i == 0)
+                if(lo == hi)
                 {
-                    counter++;
-                    denominator = Input[high] - Input[low];
-                    if (denominator == 0)
-                    {
-                        mid = low;
-                    }
-                    else
-                    {
-                        mid = low + (((Search - Input[low]) * (high - low)) / denominator);
-                    }
-                    if (Search==Input[mid])
-                    {
-                        i = mid;
-                    }
-                    else if (Search < Input[mid])
-                    {
-                        high = mid - 1;
-                    }
-                    else
-                    {
-                        low = mid + 1;
-                    }
+                    if (Input[lo] == Search) return lo;
+                    Console.WriteLine($"Item not found. Closest item : {Input[Input.Length - 1]}");
+                    return -1;
                 }
-                Console.WriteLine($"Interpolation Search counter = {counter}");
-                return i + 1;
+
+                int pos = lo + (((hi - lo) / (Input[hi] - Input[lo])) * (Search - Input[lo]));
+                closest = Input[pos];
+                if (Input[pos] == Search)
+                    return pos;
+
+                if (Input[pos] < Search)
+                {
+                    lo = pos + 1;
+                }
+                else
+                {
+                    hi = pos - 1;
+                }
             }
-            Console.WriteLine($"Interpolation Search counter = {counter}");
-            return 0;
+            if (closest == 0)
+            {
+                closest = Input[Input.Length-1];
+            }
+            Console.WriteLine($"Item not found. Closest item : {closest}");
+            return -1;
+            
         }
     }
 }

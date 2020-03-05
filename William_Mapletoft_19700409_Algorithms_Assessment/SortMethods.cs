@@ -33,6 +33,10 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
             }
             
             Console.WriteLine($"Bubble sort operations: {counter}");
+            foreach (int each in Input)
+            {
+                Console.WriteLine(each);
+            }
             return Input;
         }
         public static int[] InsertionSort(int[] Input)

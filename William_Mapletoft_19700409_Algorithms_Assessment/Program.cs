@@ -47,7 +47,7 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
                     Console.WriteLine("Please enter a value to search for.");
                     int value = int.Parse(Console.ReadLine());
                     int position = SearchMethods.BinarySearch(SortedArray, value);
-                    if (position == 0)
+                    if (position == -1)
                     {
                         Console.WriteLine("BinarySearch = Searched item not found.");
                     }
@@ -56,7 +56,7 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
                         Console.WriteLine($"BinarySearch = Item found in position {position}");
                     }
                     int position2 = SearchMethods.InterPolationSearch(SortedArray, value);
-                    if (position2 == 0)
+                    if (position2 == -1)
                     {
                         Console.WriteLine("InterpolationSearch = Searched item not found.");
                     }
