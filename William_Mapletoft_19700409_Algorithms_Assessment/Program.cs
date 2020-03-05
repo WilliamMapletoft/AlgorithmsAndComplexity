@@ -30,6 +30,8 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
                     SortedArray = SortMethods.BubbleSort(TempArray);
                     DownloadedArray.CopyTo(TempArray, 0);
                     SortedArray = SortMethods.MergeSort(TempArray);
+                    DownloadedArray.CopyTo(TempArray, 0);
+                    SortedArray = SortMethods.HeapSort(TempArray);
                     if (Convert.ToInt32(new string(SelectedNet[7],1)) == 5)
                     {
                         EveryTenth(SortedArray);
@@ -71,7 +73,7 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
 
         static int Menu()
         {
-            int choice;
+            int choice = 1;
             do
             {
                 Console.WriteLine("Choose from the 4 following options:");
@@ -79,7 +81,15 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
                 Console.WriteLine("2: Sort in ascending order");
                 Console.WriteLine("3: Sort in descrending order");
                 Console.WriteLine("4: Search the array for a user defined value");
-                choice = int.Parse(Console.ReadLine());
+                try
+                {
+                    choice = int.Parse(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Invalid input.");
+                    Menu();
+                }
             }
             while (choice < 1 || choice > 4);
             return choice;
@@ -110,7 +120,7 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
         static string SelectNet()
         {
             string net = "";
-            int choice;
+            int choice = 1;
             do
             {
                 Console.WriteLine("Choose from the 6 following options:");
@@ -120,7 +130,15 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
                 Console.WriteLine("4: Net_2_2048");
                 Console.WriteLine("5: Net_3_256");
                 Console.WriteLine("6: Net_3_2048");
-                choice = int.Parse(Console.ReadLine());
+                try
+                {
+                    choice = int.Parse(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Invalid input.");
+                    SelectNet();
+                }
                 switch (choice)
                 {
                     case 1: net = "Net_1_256.txt"; break;

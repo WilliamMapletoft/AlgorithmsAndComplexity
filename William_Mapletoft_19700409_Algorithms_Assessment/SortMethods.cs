@@ -10,6 +10,7 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
     {
 
         public static int MergeCounter = 0;
+        public static int HeapCounter = 0;
         public static int[] BubbleSort(int[] Input)
         {
             int counter = 0;
@@ -68,6 +69,7 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
             int DestinationIndex = middle;
             while (TempIndex < middle && DestinationIndex <= high)
             {
+                MergeCounter++;
                 if (Input[DestinationIndex] < temp[TempIndex])
                 {
                     Input[ResultIndex++] = Input[DestinationIndex++];
@@ -76,7 +78,6 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
                 {
                     Input[ResultIndex++] = temp[TempIndex++];
                 }
-                MergeCounter++;
             }
             while (TempIndex < middle)
             {
@@ -108,6 +109,54 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
             MergeSortRecursive(Input, temp, 0, Input.Length - 1);
             Console.WriteLine($"Merge sort operations : {MergeCounter}");
             return Input;
+        }
+
+        public static int[] HeapSort(int[] Input)
+        {
+            int n = Input.Length;
+
+            for (int i = n / 2 - 1; i >= 0; i--)
+            {
+                Heapify(Input, n, i);
+            }
+
+            for(int i = n-1; i>=0;i--)
+            {
+                int temp = Input[0];
+                Input[0] = Input[i];
+                Input[i] = temp;
+
+                Heapify(Input, i, 0);
+            }
+            Console.WriteLine($"Heap sort operations : {HeapCounter}");
+            return Input;
+        }
+
+        private static void Heapify(int[] Input, int n, int i)
+        {
+            HeapCounter++;
+            int Largest = i;
+            int Left = 2 * i + 1;
+            int Right = 2 * i + 2;
+
+            if (Left < n && Input[Left] > Input[Largest])
+            {
+                Largest = Left;
+            }
+
+            if (Right < n && Input[Right] > Input[Largest])
+            {
+                Largest = Right;
+            }
+
+            if(Largest != i)
+            {
+                int swap = Input[i];
+                Input[i] = Input[Largest];
+                Input[Largest] = swap;
+
+                Heapify(Input, n, Largest);
+            }
         }
     }
 
