@@ -28,8 +28,8 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
                         Input[i + 1] = Input[i];
                         Input[i] = temp;
                         sorted = false;
+                        counter++;
                     }
-                    counter++;
                 }
             }
             
@@ -53,8 +53,9 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
                         Input[i + 1] = Input[i];
                         Input[i] = temp;
                         sorted = false;
+                        counter++;
                     }
-                    counter++;
+                    
                 }
             }
 
@@ -71,9 +72,9 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
                 int temp = Input[numSorted];
                 for (i = numSorted; i > 0; i--)
                 {
-                    counter++;
                     if (temp < Input[i - 1])
                     {
+                        counter++;
                         if (debug == true) { Console.WriteLine($"Swapping items {Input[i]} and {Input[i - 1]}"); }
                         Input[i] = Input[i - 1];
                     }
@@ -98,9 +99,9 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
                 int temp = Input[numSorted];
                 for (i = numSorted; i > 0; i--)
                 {
-                    counter++;
                     if (temp > Input[i - 1])
                     {
+                        counter++;
                         if (debug == true) { Console.WriteLine($"Swapping items {Input[i]} and {Input[i - 1]}"); }
                         Input[i] = Input[i - 1];
                     }
@@ -115,7 +116,6 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
             Console.WriteLine($"Insertion sort operations : {counter}");
             return Input;
         }
-
         private static void Merge(int[] Input, int[] temp, int low, int middle, int high, bool debug)
         {
             int ResultIndex = low;
@@ -162,7 +162,6 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
                 Input[ResultIndex++] = temp[TempIndex++];
             }
         }
-
         private static void MergeSortRecursive(int[] Input, int[] temp, int low, int high, bool debug)
         {
             MergeCounter++;
@@ -211,7 +210,6 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
             Console.WriteLine($"Merge sort operations : {MergeCounter}");
             return Input;
         }
-
         public static int[] HeapSort(int[] Input, bool debug)
         {
             int n = Input.Length;
@@ -252,7 +250,6 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
             Console.WriteLine($"Heap sort operations : {HeapCounter}");
             return Input;
         }
-
         private static void Heapify(int[] Input, int n, int i, bool debug)
         {
             HeapCounter++;
