@@ -90,6 +90,7 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
                 case 6:
                     if (Debug == false) { Debug = true; }
                     else  { Debug = false; }
+                    Main(args);
                     break;
             }
             //int[] SortedArray = SortMethods.BubbleSort(Net1_256);

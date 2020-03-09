@@ -126,7 +126,7 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
                 MergeCounter++;
                 if (Input[DestinationIndex] < temp[TempIndex])
                 {
-                    if (debug == true) { Console.WriteLine($"Swapping items {Input[ResultIndex + 1]} and {Input[DestinationIndex + 1]}"); }
+                    if (debug == true) { Console.WriteLine($"Swapping items {Input[DestinationIndex]} and {temp[TempIndex]}"); }
                     Input[ResultIndex++] = Input[DestinationIndex++];
                 }
                 else
@@ -149,7 +149,7 @@ namespace William_Mapletoft_19700409_Algorithms_Assessment
                 MergeCounter++;
                 if (Input[DestinationIndex] > temp[TempIndex])
                 {
-                    if (debug == true) { Console.WriteLine($"Swapping items {Input[ResultIndex + 1]} and {Input[DestinationIndex + 1]}"); }
+                    if (debug == true) { Console.WriteLine($"Swapping items {Input[DestinationIndex]} and {temp[TempIndex]}"); }
                     Input[ResultIndex++] = Input[DestinationIndex++];
                 }
                 else
